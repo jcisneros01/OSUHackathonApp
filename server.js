@@ -1,7 +1,7 @@
 // Set up 
 var express = require("express");
 var app = express();
-app.set('port', 4000); // set port
+app.set('port', 3000); // set port
 app.use(express.static(__dirname + '/public')); // static files
 app.set("view engine", "ejs");
 
@@ -20,10 +20,21 @@ var cardSchema = new mongoose.Schema({
 
 var Card = mongoose.model("Card", cardSchema);
 
-// Add test card
+// Add test cards
 Card.create({
    front: "What is the meaning of life?",
    back: "42"
+}, function(err, cat){
+    if(err){
+        console.log(err);
+    } else {
+        console.log(cat);
+    }
+});
+
+Card.create({
+   front: "What is the sky's color?",
+   back: "blue"
 }, function(err, cat){
     if(err){
         console.log(err);
