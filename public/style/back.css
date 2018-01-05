@@ -1,12 +1,26 @@
-.answer-title{
+.answer-title {
     margin-left: auto;
     margin-right: auto;
     width: 8em;
     text-align: center;
 }
 
+.answer-title-row {
+    border-bottom: 1px solid grey;
+    padding: 5px;
+}
 
-.answer-text{
+.answer-text {
     margin-left: auto;
     margin-right: auto;
+    padding: 5px;
+}
+
+.feedback-buttons {
+    margin: auto;
+    padding: 20px;
+}
+
+.space-between-buttons {
+    margin: 20px;
 }
