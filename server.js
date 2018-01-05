@@ -52,6 +52,10 @@ app.get('/add', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/add.html'));
 });
 
+app.get('/edit', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/edit.html'));
+});
+
 app.get('/back', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/back.html'));
 });
