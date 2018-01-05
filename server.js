@@ -45,6 +45,17 @@ Card.create({
     }
 });
 
+Card.create({
+   front: "What is the name of the #1 Hackathon Team?",
+   back: "Hack n Slash"
+}, function(err, cat){
+    if(err){
+        console.log(err);
+    } else {
+        console.log(cat);
+    }
+});
+
 // Routes
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/home.html'));
