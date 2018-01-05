@@ -6,7 +6,6 @@ app.set('port', 3000); // set port
 app.use(express.static(__dirname + '/public')); // static files
 app.set("view engine", "ejs");
 
-
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -21,29 +20,6 @@ var cardSchema = new mongoose.Schema({
 });
 
 var Card = mongoose.model("Card", cardSchema);
-
-// Add test cards
-Card.create({
-   front: "What is the meaning of life?",
-   back: "42"
-}, function(err, cat){
-    if(err){
-        console.log(err);
-    } else {
-        console.log(cat);
-    }
-});
-
-Card.create({
-   front: "What is the sky's color?",
-   back: "blue"
-}, function(err, cat){
-    if(err){
-        console.log(err);
-    } else {
-        console.log(cat);
-    }
-});
 
 // Routes
 app.get('/', function(req, res) {
@@ -67,26 +43,51 @@ app.get('/front', function(req, res) {
 });
 
 
-// Restful Routes
+/*Restful Routes*/
 
-  // Retrieve all cards
-  app.get("/cards", function(req, res){
-     Card.find({}, function(err, cards){
-         if(err){
-             console.log("ERROR!");
-         } else {
-            console.log(cards);
-         }
-     });
+// Retrieve all cards
+app.get("/cards", function(req, res){
+   Card.find({}, function(err, cards){
+       if(err){
+           console.log("ERROR!");
+       } else {
+          console.log(cards);
+       }
+   });
+});
+
+// Create a card
+app.post('/add', function(req, res) {
+  Card.create({
+    front: req.body.front,
+    back: req.body.back
+  }, function(err, card){
+      if(err){
+            console.log(err);
+            res.status(500).send({message: "Some error occurred while creating the card."});
+      } else {
+          //then, redirect to the index
+          console.log(card);
+          res.redirect('/');
+      }
+  });
+});
+
+// Retrieve a card
+app.get('/card:cardID', function(req, res) {
+  
+});
+
+// Update a card
+app.put('/edit/:cardID', function(req, res) {
+
   });
 
-  // Create a card
+// Delete a card
+app.delete('/delete/:cardID', function(req, res) {
 
-  // Retrieve a card
+  });
 
-  // Update a card
-
-  // Delete a card
 
 app.use(function(req,res){
   res.status(404);

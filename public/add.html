@@ -24,7 +24,7 @@
 
         <h4>ADD</h4>
 
-        <form>
+        <form action="/add" method="POST">
           <div class="section">
             <label id="boxName">Type </label>
             <input id="inputBox" type="text" name="text">
@@ -37,16 +37,15 @@
 
           <div class="section">
             <label id="boxName">Front</label>
-            <input id="inputBox" type="text" name="text">
+            <input id="inputBox" type="text" name="front">
           </div>
 
           <div class="section">
-            <label id="boxName">Back </label>
-            <input id="inputBox" type="text" name="text">
+            <label id="boxName">Back</label>
+            <input id="inputBox" type="text" name="back">
           </div>
-
           <div>
-            <button type="button" class="btn btn-success">Save</button>
+            <input class="btn btn-success" type="submit">
           </div>
         </form>
       </div>
