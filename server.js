@@ -49,9 +49,10 @@ app.get('/front', function(req, res) {
 app.get("/cards", function(req, res){
    Card.find({}, function(err, cards){
        if(err){
-           console.log("ERROR!");
+           res.status(500).send({message: "Some error occurred while retrieving notes."});
        } else {
           console.log(cards);
+          res.send(cards);
        }
    });
 });
@@ -74,8 +75,16 @@ app.post('/add', function(req, res) {
 });
 
 // Retrieve a card
-app.get('/card:cardID', function(req, res) {
-  
+app.get('/card/:id', function(req, res) {
+  Card.findById(req.params.id, function(err, card) {
+    if(err){
+           console.log(err);
+           res.status(500).send({message: "Could not retrieve card with id " + req.params.id});
+       } else {
+           res.send(card);
+           console.log(card);
+       }
+  });
 });
 
 // Update a card
