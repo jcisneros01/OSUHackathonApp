@@ -98,9 +98,15 @@ app.put('/edit/:id', function(req, res) {
 
 // Delete a card
 app.delete('/delete/:id', function(req, res) {
-
+    Card.findByIdAndRemove(req.params.id, function(err) {
+      if(err){
+             console.log(err);
+             res.status(500).send({message: "Could not delete note with id " + req.params.id});
+         } else {
+             res.send({message: "Note deleted successfully!"})
+         }
+    });
   });
-
 
 app.use(function(req,res){
   res.status(404);
