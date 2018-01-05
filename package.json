@@ -1,21 +1,26 @@
 {
-  "name": "chat-example",
-  "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
+  "name": "flashcardapp",
+  "version": "1.0.0",
+  "description": "flash card app using node.js",
   "main": "server.js",
-  "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
   "dependencies": {
-    "async": "~0.2.8",
-    "express": "~3.2.4",
-    "socket.io": "~0.9.14",
-    "pm2": "^2.4.2"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.0-rc2"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start index.js -i max — name='My-App'",
-    "restart": "pm2 restart all",   
-    "forever": "^0.15.3",
-    "socket.io": "~0.9.14"
-  }
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcisneros01/OSUHackathonApp.git"
+  },
+  "author": "Hack N Slash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcisneros01/OSUHackathonApp/issues"
+  },
+  "homepage": "https://github.com/jcisneros01/OSUHackathonApp#readme"
 }
