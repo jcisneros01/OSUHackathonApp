@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/default_deck");
 
-// MONGOOSE/MODEL CONFIG
+// Mongoose Model
 var cardSchema = new mongoose.Schema({
     front: String,
     back: String
@@ -61,7 +61,7 @@ app.get('/front', function(req, res) {
 });
 
 
-// INDEX ROUTE
+// Restful Routes
 app.get("/cards", function(req, res){
    Card.find({}, function(err, cards){
        if(err){
