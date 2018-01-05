@@ -5,32 +5,48 @@
     <title>Add</title>
 
     <link rel="stylesheet" href="add.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
   </head>
+
   <body>
     <div class="outer">
+
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Logout</a>
+        </li>
+      </ul>
 
       <div class="container">
 
         <h4>ADD</h4>
 
         <form>
-          <div>
+          <div class="section">
             <label id="boxName">Type </label>
             <input id="inputBox" type="text" name="text">
           </div>
 
-          <div>
+          <div class="section">
+            <label id="boxName">Deck</label>
+            <input id="inputBox" type="text" name="text">
+          </div>
+
+          <div class="section">
             <label id="boxName">Front</label>
             <input id="inputBox" type="text" name="text">
           </div>
 
-          <div>
+          <div class="section">
             <label id="boxName">Back </label>
             <input id="inputBox" type="text" name="text">
           </div>
 
           <div>
-            <input id="submit" type="submit" value="Save">
+            <button type="button" class="btn btn-success">Save</button>
           </div>
         </form>
       </div>
