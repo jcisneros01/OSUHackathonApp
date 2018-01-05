@@ -42,6 +42,10 @@ app.get('/front', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/front.html'));
 });
 
+app.get('/deck', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/deck.html'));
+});
+
 
 /*Restful Routes*/
 
@@ -88,12 +92,12 @@ app.get('/card/:id', function(req, res) {
 });
 
 // Update a card
-app.put('/edit/:cardID', function(req, res) {
+app.put('/edit/:id', function(req, res) {
 
   });
 
 // Delete a card
-app.delete('/delete/:cardID', function(req, res) {
+app.delete('/delete/:id', function(req, res) {
 
   });
 
