@@ -4,6 +4,8 @@ var app = express();
 var path = require('path');
 app.set('port', 3000); // set port
 app.use(express.static(__dirname + '/public')); // static files
+app.set("view engine", "ejs");
+
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -66,15 +68,25 @@ app.get('/front', function(req, res) {
 
 
 // Restful Routes
-app.get("/cards", function(req, res){
-   Card.find({}, function(err, cards){
-       if(err){
-           console.log("ERROR!");
-       } else {
-          console.log(cards);
-       }
-   });
-});
+
+  // Retrieve all cards
+  app.get("/cards", function(req, res){
+     Card.find({}, function(err, cards){
+         if(err){
+             console.log("ERROR!");
+         } else {
+            console.log(cards);
+         }
+     });
+  });
+
+  // Create a card
+
+  // Retrieve a card
+
+  // Update a card
+
+  // Delete a card
 
 app.use(function(req,res){
   res.status(404);
