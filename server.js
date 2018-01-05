@@ -1,84 +1,76 @@
-//
-// # SimpleServer
-//
-// A simple chat server using Socket.IO, Express, and Async.
-//
-var http = require('http');
-var path = require('path');
+// Set up 
+var express = require("express");
+var app = express();
+app.set('port', 3000); // set port
+app.use(express.static(__dirname + '/public')); // static files
+app.set("view engine", "ejs");
 
-var async = require('async');
-var socketio = require('socket.io');
-var express = require('express');
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-//
-// ## SimpleServer `SimpleServer(obj)`
-//
-// Creates a new instance of SimpleServer with the following options:
-//  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
-//
-var router = express();
-var server = http.createServer(router);
-var io = socketio.listen(server);
+var mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/default_deck");
 
-router.use(express.static(path.resolve(__dirname, 'client')));
-var messages = [];
-var sockets = [];
+// MONGOOSE/MODEL CONFIG
+var cardSchema = new mongoose.Schema({
+    front: String,
+    back: String
+});
 
-io.on('connection', function (socket) {
-    messages.forEach(function (data) {
-      socket.emit('message', data);
-    });
+var Card = mongoose.model("Card", cardSchema);
 
-    sockets.push(socket);
-
-    socket.on('disconnect', function () {
-      sockets.splice(sockets.indexOf(socket), 1);
-      updateRoster();
-    });
-
-    socket.on('message', function (msg) {
-      var text = String(msg || '');
-
-      if (!text)
-        return;
-
-      socket.get('name', function (err, name) {
-        var data = {
-          name: name,
-          text: text
-        };
-
-        broadcast('message', data);
-        messages.push(data);
-      });
-    });
-
-    socket.on('identify', function (name) {
-      socket.set('name', String(name || 'Anonymous'), function (err) {
-        updateRoster();
-      });
-    });
-  });
-
-function updateRoster() {
-  async.map(
-    sockets,
-    function (socket, callback) {
-      socket.get('name', callback);
-    },
-    function (err, names) {
-      broadcast('roster', names);
+// Add test cards
+Card.create({
+   front: "What is the meaning of life?",
+   back: "42"
+}, function(err, cat){
+    if(err){
+        console.log(err);
+    } else {
+        console.log(cat);
     }
-  );
-}
+});
 
-function broadcast(event, data) {
-  sockets.forEach(function (socket) {
-    socket.emit(event, data);
-  });
-}
+Card.create({
+   front: "What is the sky's color?",
+   back: "blue"
+}, function(err, cat){
+    if(err){
+        console.log(err);
+    } else {
+        console.log(cat);
+    }
+});
 
-server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
-  var addr = server.address();
-  console.log("Chat server listening at", addr.address + ":" + addr.port);
+// Routes
+app.get("/", function(req, res){
+   res.redirect("/cards"); 
+});
+
+// INDEX ROUTE
+app.get("/cards", function(req, res){
+   Card.find({}, function(err, cards){
+       if(err){
+           console.log("ERROR!");
+       } else {
+          console.log(cards);
+       }
+   });
+});
+
+app.use(function(req,res){
+  res.status(404);
+  res.render('404');
+});
+
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500);
+  res.render('500');
+});
+
+// Start server
+app.listen(app.get('port'), function(){
+  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
