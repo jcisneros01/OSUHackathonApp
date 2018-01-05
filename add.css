@@ -1,0 +1,42 @@
+
+body {
+    background-color: rgba(0, 255, 0, 0.10);
+}
+
+
+.outer{
+  /* box-sizing: border-box; */
+
+  border-width: medium;
+  padding: 10%;
+
+}
+.container {
+  margin: auto;
+  /* text-align: center; */
+  background-color: white;
+  border-style: solid;
+  border-color: green;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+#inputBox {
+
+
+}
+
+#boxName {
+
+
+}
+
+h4 {
+  text-align: left;
+  padding-bottom: 5%
+}
+
+#submit {
+  padding-top: 5%;
+}
