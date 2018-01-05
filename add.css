@@ -1,13 +1,10 @@
 .outer{
-  /* box-sizing: border-box; */
-
   border-width: medium;
   padding: 10%;
 
 }
 .container {
   margin: auto;
-  /* text-align: center; */
   background-color: white;
   border-style: solid;
   border-color: green;
