@@ -4,7 +4,7 @@
 
 }
 .container {
-  margin: auto;
+  margin:auto;
   background-color: white;
   border-style: solid;
   border-color: green;
@@ -23,6 +23,7 @@ label {
 }
 
 .section{
+  margin: auto;
   padding-top: 5px;
   padding-bottom: 5px;
 }
