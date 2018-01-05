@@ -1,9 +1,9 @@
 // Set up 
 var express = require("express");
 var app = express();
+var path = require('path');
 app.set('port', 3000); // set port
 app.use(express.static(__dirname + '/public')); // static files
-app.set("view engine", "ejs");
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,9 +44,22 @@ Card.create({
 });
 
 // Routes
-app.get("/", function(req, res){
-   res.redirect("/cards"); 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/home.html'));
 });
+
+app.get('/add', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/add.html'));
+});
+
+app.get('/back', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/back.html'));
+});
+
+app.get('/front', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/front.html'));
+});
+
 
 // INDEX ROUTE
 app.get("/cards", function(req, res){
