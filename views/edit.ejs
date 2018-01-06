@@ -61,15 +61,17 @@ function updateCard(){
 		var payload = {"front" : document.getElementById("front").value,
 								"back" : document.getElementById("back").value};
 		console.log(payload);
-		req.open("PUT", url, false);
+		req.open("PUT", url, true);
 		req.setRequestHeader("Content-Type", "application/json");
+        // fix error that causes error to exec else 
 		if (req.status >= 200 && req.status < 400){
-			window.location = "/deck";
-		}
-		else{
+            window.location = "/deck";
+		} else {
 			console.log("Error: " + req.statusText);
+            window.location = "/deck";
 		}
 		req.send(JSON.stringify(payload));
+        input.preventDefault();
 		});	
 };	
 </script>
