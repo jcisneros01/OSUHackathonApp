@@ -46,6 +46,9 @@ app.get('/deck', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/deck.html'));
 });
 
+app.get('/study', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/studymode.html'));
+});
 
 /*Restful Routes*/
 
@@ -73,7 +76,7 @@ app.post('/add', function(req, res) {
       } else {
           //then, redirect to the index
           console.log(card);
-          res.redirect('/');
+          res.redirect('/deck');
       }
   });
 });
