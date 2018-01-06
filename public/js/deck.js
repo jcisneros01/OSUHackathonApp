@@ -36,7 +36,6 @@ function displayCards(cards) {
             '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>' +
             '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteCard(this)"/></form>';
 
-        cardNumber.appendChild(buttons);
 
         //display front and back 
         li_front.appendChild(document.createTextNode('front: ' + cards[i].front));
@@ -48,6 +47,7 @@ function displayCards(cards) {
         var list = document.querySelector(".card-list");
         list.appendChild(cardNumber);
         list.appendChild(ul);
+        list.appendChild(buttons);
     }
 }
 
