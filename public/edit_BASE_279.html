@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Edit</title>
 
-    <link rel="stylesheet" href="css/edit.css">
+    <link rel="stylesheet" href="style/edit.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 </head>
 
@@ -22,25 +22,33 @@
         </ul>
 
         <div class="edit-title">
-            <h4>Edit the Card</h4>
+            <h4>Edit</h4>
         </div>
 
         <div class="container">
-            <form action="/edit" method="POST">
+            <form>
+                <div class="section">
+                    <label id="boxName">Type </label>
+                    <input id="inputBox" class="form-control" type="text" name="text">
+                </div>
+
+                <div class="section">
+                    <label id="boxName">Deck</label>
+                    <input id="inputBox" class="form-control" type="text" name="text">
+                </div>
 
                 <div class="section">
                     <label id="boxName">Front</label>
-                    <input class="form-control" type="text" name="text">
+                    <input id="inputBox" class="form-control" type="text" name="text">
                 </div>
 
                 <div class="section">
                     <label id="boxName">Back </label>
-                    <input class="form-control" type="text" name="text">
+                    <input id="inputBox" class="form-control" type="text" name="text">
                 </div>
 
             </form>
         </div>
-
         <div class="save-button">
             <button type="button" class="btn btn-success">Save</button>
         </div>
