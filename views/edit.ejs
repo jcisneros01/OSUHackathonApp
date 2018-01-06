@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Edit</title>
 
-    <link rel="stylesheet" href="css/edit.css">
+    <link rel="stylesheet" href="/css/edit.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 </head>
 
@@ -30,16 +31,16 @@
 
                 <div class="section">
                     <label id="boxName">Front</label>
-                    <input class="form-control" type="text" name="text" value="<%= card.front %>">
+                    <input class="form-control" type="text" id="front" value="<%= card.front %>">
                 </div>
 
                 <div class="section">
                     <label id="boxName">Back </label>
-                    <input class="form-control" type="text" name="text" value="<%= card.back %>">
+                    <input class="form-control" type="text" id="back" value="<%= card.back %>">
                 </div>
 
 				<div class="save-button">
-					<input type="submit" class="btn btn-success" value="Save">
+					<input type="submit" class="btn btn-success" value="Save" id="updateBtn">
 				</div>
 				
 				
@@ -48,7 +49,34 @@
 
         
     </div>
+<script>
+document.addEventListener("DOMContentLoaded", updateCard);
+
+var id = "<%= card._id %>";
+var url = "/update/" + id;
+
+function updateCard(){
+		document.getElementById("updateBtn").addEventListener('click', function(input){
+		var req = new XMLHttpRequest();
+		var payload = {"front" : document.getElementById("front").value,
+								"back" : document.getElementById("back").value};
+		console.log(payload);
+		req.open("PUT", url, false);
+		req.setRequestHeader("Content-Type", "application/json");
+		if (req.status >= 200 && req.status < 400){
+			
+		}
+		else{
+			console.log("Error: " + req.statusText);
+		}
+		req.send(JSON.stringify(payload));
+		});	
+};	
+</script>
+
 </body>
+
+
 
 </html>
 
