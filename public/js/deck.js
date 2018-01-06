@@ -32,7 +32,7 @@ function displayCards(cards) {
         cardNumber.appendChild(document.createTextNode('Card No.' + cards[i]._id));
         buttons.innerHTML = '<form action="/edit" method="post"><input type="hidden" name="id" value="' + cards[i]._id 
             + '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>'
-            + '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteRow(this)"/></form>';
+            + '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteCard(this)"/></form>';
 
         cardNumber.appendChild(buttons);
 
@@ -49,5 +49,21 @@ function displayCards(cards) {
     }
 }
 
+// Delete card and if successfull redirect
+function deleteCard(element) {
+     var id = element.form.elements[0].value;
+     console.log(id);
+     var req = new XMLHttpRequest(); 
+     var url = "/delete/" + id;
+     req.open("DELETE", url, true);
+     req.addEventListener('load', function() {
+       if(req.status >= 200 && req.status < 400){
+          window.location = "/deck";
+       } else {
+           console.log("Error in network request: " + req.statusText);
+       }
+     }); 
+     req.send(null);
+}
 
 
