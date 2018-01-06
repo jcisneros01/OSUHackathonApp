@@ -13,15 +13,13 @@
     text-align: center;
 }
 
-.jumbotron{
-    background-color: #f5f5f5 !important;
-    color: black;
-}
-
 .nav-item{
     margin:auto;
+    color:#2780E3;
 }
 
 .app-title{
-    text-align:center
+    text-align:center;
+    background-color:#2780E3 !important;
+    color: #fff; 
 }
