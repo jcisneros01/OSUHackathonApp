@@ -22,7 +22,7 @@ function displayCards(cards) {
 
         //create the elements
         var cardRow = document.createElement("div");
-        cardRow.setAttribute("class", "card-row");
+        cardRow.setAttribute("class", "card card-row");
         
         var ul = document.createElement("ul");
         var cardNumber = document.createElement("h6");
