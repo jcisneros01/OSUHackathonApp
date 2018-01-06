@@ -116,10 +116,9 @@ app.put('/update/:id', function(req, res) {
     }, 
      function(err, card){
        if(err){
-           res.status(500).send({message: "Could not update card with id " + req.params.id});
+          res.status(500).send({message: "Could not update note with id " + req.params.noteId});
        }  else {
            res.send(card);
-           res.redirect('/');
        }
     });
   });
