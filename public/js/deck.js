@@ -29,7 +29,7 @@ function displayCards(cards) {
 
         //add edit button and delete button for each card
         var card_number = i+1;
-        cardNumber.appendChild(document.createTextNode('Card No.' + i));
+        cardNumber.appendChild(document.createTextNode('Card No.' + card_number));
         cardNumber.setAttribute('id', cards[i]._id);
 
         buttons.innerHTML = '<form action="/edit" method="post"><input type="hidden" name="id" value="' + cards[i]._id +
