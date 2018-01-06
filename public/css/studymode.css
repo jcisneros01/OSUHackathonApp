@@ -21,3 +21,15 @@ ul {
     list-style-type: none;
     padding-left: 10px;
 }
+
+.card{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    text-rendering: optimizeLegibility;
+    background-color: #f8f9fa !important;
+}
+
+h5{
+    color: #373a3c;
+    font-size: 2em;
+}
