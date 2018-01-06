@@ -22,14 +22,15 @@ ul {
     padding-left: 10px;
 }
 
-.card{
+.card {
     margin-top: 5%;
     margin-bottom: 10%;
     text-rendering: optimizeLegibility;
     background-color: #f8f9fa !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
-h5{
+h5 {
     color: #373a3c;
     font-size: 2em;
 }

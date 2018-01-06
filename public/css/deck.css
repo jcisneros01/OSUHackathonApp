@@ -23,10 +23,10 @@ ul {
 }
 
 li {
-    margin-top: 15px; 
+    margin-top: 15px;
 }
 
-.space-between-buttons{
+.space-between-buttons {
     margin: 5px;
 }
 
@@ -37,23 +37,24 @@ li {
     margin-right: 10%;
 }
 
-.card > .title{
+.card>.title {
     text-align: center;
 }
 
-.card > h6 {
-    text-align: center;
-} 
-
-.card > span{
+.card>h6 {
     text-align: center;
 }
 
-.card-list{
-    width:100%;
+.card>span {
+    text-align: center;
 }
 
-.card{
+.card-list {
+    width: 100%;
+}
+
+.card {
     padding-top: 10px;
     padding-bottom: 10px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
