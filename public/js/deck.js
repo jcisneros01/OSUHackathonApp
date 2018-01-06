@@ -48,4 +48,4 @@ var createCardList = cards.forEach((card)=>{
     list.appendChild(ul);
 
     counter++;
-})
+});
