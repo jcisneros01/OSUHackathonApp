@@ -20,9 +20,20 @@
                 <h1 class="view-cards-title" id="cardView">Front</h1>
             </div>
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="displayBack()">Back of Card</button>
-            <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="traverseArray()">Next Card</button>
+            <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="traverseArray(), increment()">Next Card</button>
+			
+			<br>
+			<br>
+			<div class="progress">
+				<div class="progress-bar bg-info" role="progressbar" style="width: 0%" id="pBar"></div>
+			</div>
+			
         </div>
+		
+		
+		
     </div>
+	<script src="js/progressbar.js"></script>
     <script src="js/studymode.js"></script>
   </body>
 </html>
