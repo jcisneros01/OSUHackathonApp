@@ -37,9 +37,9 @@ var createCardList = cards.forEach((card) => {
 
     //add edit button and delete button for each card
     cardNumber.appendChild(document.createTextNode('Card No.' + counter));
-    buttons.innerHTML = '<form action="/getId" method="post"><input type="hidden" name="id" value="'
-        + '"/><input type="submit" class="btn-block" value="Edit"/>'
-        + '<input type="button"  class="btn-block" value="Delete" onclick="deleteRow(this)"/></form>';
+    buttons.innerHTML = '<form action="/" method="post"><input type="hidden" name="id" value="'
+        + '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>'
+        + '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteRow(this)"/></form>';
 
     cardNumber.appendChild(buttons);
 
