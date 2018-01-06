@@ -34,6 +34,10 @@ app.get('/edit', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/edit.html'));
 });
 
+app.get('/update', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/update.html'));
+});
+
 app.get('/back', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/back.html'));
 });
@@ -93,14 +97,43 @@ app.get('/card/:id', function(req, res) {
 
 // Update a card
 app.put('/edit/:id', function(req, res) {
+  Card.findById(req.params.id, function(err, card){
+	  if(err){
+		  console.log(err);
+		  res.status(500).send({message: "Could not update card with id " + req.params.id});
+	  } else{
+		  res.send(card);
+		  console.log(card);
+	  }
+  });
+});
 
+app.put('/update/:id', function(req, res) {
+    Card.findByIdAndUpdate(req.params.id,
+    {
+      front: req.body.front,
+      back: req.body.back
+    }, 
+     function(err, card){
+       if(err){
+          res.status(500).send({message: "Could not update note with id " + req.params.noteId});
+       }  else {
+           res.send(card);
+       }
+    });
   });
 
 // Delete a card
 app.delete('/delete/:id', function(req, res) {
-
+    Card.findByIdAndRemove(req.params.id, function(err) {
+      if(err){
+             console.log(err);
+             res.status(500).send({message: "Could not delete note with id " + req.params.id});
+         } else {
+             res.send({message: "Note deleted successfully!"})
+         }
+    });
   });
-
 
 app.use(function(req,res){
   res.status(404);

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Add</title>
+    <title>Add New Card</title>
 
     <link rel="stylesheet" href="css/add.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
@@ -19,21 +19,24 @@
 
       <div class="container">
 
-        <h4>ADD</h4>
+        <div class="add-title">
+          <h4>ADD</h4>
+        </div>
 
         <form action="/add" method="POST">
 
           <div class="section">
             <label id="boxName">Front</label>
-            <input id="inputBox" type="text" name="front">
+            <input class="form-control" type="text" name="front">
           </div>
 
           <div class="section">
             <label id="boxName">Back</label>
-            <input id="inputBox" type="text" name="back">
+            <input class="form-control" type="text" name="back">
           </div>
-          <div>
+          <div class="submit-button">
             <input class="btn btn-success" type="submit">
+            </div>
           </div>
         </form>
       </div>

@@ -1,0 +1,41 @@
+.outer{
+    border-width: medium;
+    padding: 10%;
+  
+  }
+  .container {
+    margin:auto;
+    background-color: white;
+    border-style: solid;
+    border-color: grey;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 10px;
+  }
+  
+  
+  label {
+    width: 180px;
+    clear: left;
+    text-align: left;
+    padding-right: 10px;
+    float: left;
+  }
+  
+  .section{
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .edit-title{
+      text-align: center;
+      padding: 10px;
+  }
+  
+  .save-button{
+      text-align:center;
+      padding: 10px;
+  }
+  
+  

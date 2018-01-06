@@ -33,11 +33,13 @@ label {
     padding: 10px;
 }
 
-.save-button{
+.submit-button{
     text-align:center;
     padding: 10px;
 }
 
-
+.input-box{
+  width: 100%;
+}
 
 
