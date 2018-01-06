@@ -30,7 +30,7 @@ function displayCards(cards) {
 
         //add edit button and delete button for each card
         cardNumber.appendChild(document.createTextNode('Card No.' + cards[i]._id));
-        buttons.innerHTML = '<form action="/post" method="get"><input type="hidden" name="id" value="'
+        buttons.innerHTML = '<form action="/edit" method="post"><input type="hidden" name="id" value="' + cards[i]._id 
             + '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>'
             + '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteRow(this)"/></form>';
 
