@@ -100,7 +100,7 @@ app.post('/edit', function(req, res) {
     Card.findById(req.body.id, function(err, card){
 	  if(err){
 		  console.log(err);
-		  res.status(500).send({message: "Could not edit card with id " + req.params.id});
+		  res.status(500).send({message: "Could not edit card with id " + req.body.id});
 	  } else{
 		  res.render("edit", {card: card});
 	  }
