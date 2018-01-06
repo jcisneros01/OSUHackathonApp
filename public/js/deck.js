@@ -26,19 +26,26 @@ var counter = 1;
  * by a ul and two li showing front and back onto the 
  * html page.  
  **********************************************************/
-var createCardList = cards.forEach((card)=>{
+var createCardList = cards.forEach((card) => {
 
     //create the elements
-    var ul= document.createElement("ul");
-    var cardNumber= document.createElement("h8");
-    var li_front= document.createElement("li");
-    var li_back= document.createElement("li");
+    var ul = document.createElement("ul");
+    var cardNumber = document.createElement("div");
+    var li_front = document.createElement("li");
+    var li_back = document.createElement("li");
+    var buttons = document.createElement("span");
 
+    //add edit button and delete button for each card
     cardNumber.appendChild(document.createTextNode('Card No.' + counter));
+    buttons.innerHTML = '<form action="/getId" method="post"><input type="hidden" name="id" value="'
+        + '"/><input type="submit" class="btn-block" value="Edit"/>'
+        + '<input type="button"  class="btn-block" value="Delete" onclick="deleteRow(this)"/></form>';
 
+    cardNumber.appendChild(buttons);
+
+    //display front and back 
     li_front.appendChild(document.createTextNode('front: ' + card.front));
-
-    li_back.appendChild(document.createTextNode('back: ' + card.back)); 
+    li_back.appendChild(document.createTextNode('back: ' + card.back));
 
     ul.appendChild(li_front);
     ul.appendChild(li_back);
@@ -49,3 +56,5 @@ var createCardList = cards.forEach((card)=>{
 
     counter++;
 });
+
+
