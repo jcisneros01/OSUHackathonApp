@@ -5,11 +5,12 @@
 
 .container {
     margin: auto;
-    background-color: white;
-    border-style: 1px solid grey;
+    background-color: #f5f5f5;
+    border: 1px solid grey;
     padding-left: 10%;
     padding-right: 10%;
-    padding-bottom: 10px;
+    padding-bottom: 10%;
+    margin-top: 10px;
 }
 
 .view-cards-title {
@@ -22,6 +23,25 @@ ul {
     padding-left: 10px;
 }
 
+li {
+    margin: 10px; 
+}
+
 .space-between-buttons{
     margin: 5px;
+}
+
+.card{
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 100%;
+    padding: 10px;
+}
+
+.card-row > h6 {
+    text-align: center;
+} 
+
+.card-row > span{
+    text-align: center;
 }

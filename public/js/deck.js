@@ -21,8 +21,11 @@ function displayCards(cards) {
     for (var i = 0; i < cards.length; i++) {
 
         //create the elements
+        var cardRow = document.createElement("div");
+        cardRow.setAttribute("class", "card card-row");
+        
         var ul = document.createElement("ul");
-        var cardNumber = document.createElement("div");
+        var cardNumber = document.createElement("h6");
         var li_front = document.createElement("li");
         var li_back = document.createElement("li");
         var buttons = document.createElement("span");
@@ -46,9 +49,12 @@ function displayCards(cards) {
         ul.appendChild(li_back);
 
         var list = document.querySelector(".card-list");
-        list.appendChild(cardNumber);
-        list.appendChild(ul);
-        list.appendChild(buttons);
+
+         
+        cardRow.appendChild(cardNumber);
+        cardRow.appendChild(ul);
+        cardRow.appendChild(buttons);
+        list.appendChild(cardRow);
     }
 }
 
