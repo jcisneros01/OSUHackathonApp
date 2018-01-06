@@ -1,60 +1,53 @@
-// Testing data
-var cards = [
 
-    card1 = {
-        front: "This is a card front 1",
-        back: "This is a card back 1"
-    },
+document.addEventListener('DOMContentLoaded', getCards);
 
-    card2 = {
-        front: "This is a card front 2",
-        back: "This is a card back 2"
-    },
+function getCards() {
+        var req = new XMLHttpRequest(); 
+        var url = "/cards";
+        req.open("GET", url, true);
+        req.addEventListener('load', function() {
+          if(req.status >= 200 && req.status < 400){
+            var cards = JSON.parse(req.responseText);
+            console.log(cards);
+            displayCards(cards);
+          } else {
+              console.log("Error in network request: " + req.statusText);
+          }
+        });
+        req.send(null);
+}
 
-    card3 = {
-        front: "This is a card front 3",
-        back: "This is a card back 3"
+function displayCards(cards) {
+
+    for (var i = 0; i < cards.length; i++) {
+
+          //create the elements
+        var ul = document.createElement("ul");
+        var cardNumber = document.createElement("div");
+        var li_front = document.createElement("li");
+        var li_back = document.createElement("li");
+        var buttons = document.createElement("span");
+
+        //add edit button and delete button for each card
+        cardNumber.appendChild(document.createTextNode('Card No.' + cards[i]._id));
+        buttons.innerHTML = '<form action="/post" method="get"><input type="hidden" name="id" value="'
+            + '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>'
+            + '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteRow(this)"/></form>';
+
+        cardNumber.appendChild(buttons);
+
+        //display front and back 
+        li_front.appendChild(document.createTextNode('front: ' + cards[i].front));
+        li_back.appendChild(document.createTextNode('back: ' +  cards[i].back));
+
+        ul.appendChild(li_front);
+        ul.appendChild(li_back);
+
+        var list = document.querySelector(".card-list");
+        list.appendChild(cardNumber);
+        list.appendChild(ul); 
     }
-];
+}
 
-// set up an counter
-var counter = 1;
-
-/***********************************************************
- *                     createCardList
- * For each card in the card list, insert a title, follow
- * by a ul and two li showing front and back onto the 
- * html page.  
- **********************************************************/
-var createCardList = cards.forEach((card) => {
-
-    //create the elements
-    var ul = document.createElement("ul");
-    var cardNumber = document.createElement("div");
-    var li_front = document.createElement("li");
-    var li_back = document.createElement("li");
-    var buttons = document.createElement("span");
-
-    //add edit button and delete button for each card
-    cardNumber.appendChild(document.createTextNode('Card No.' + counter));
-    buttons.innerHTML = '<form action="/post" method="get"><input type="hidden" name="id" value="'
-        + '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>'
-        + '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteRow(this)"/></form>';
-
-    cardNumber.appendChild(buttons);
-
-    //display front and back 
-    li_front.appendChild(document.createTextNode('front: ' + card.front));
-    li_back.appendChild(document.createTextNode('back: ' + card.back));
-
-    ul.appendChild(li_front);
-    ul.appendChild(li_back);
-
-    var list = document.querySelector(".card-list");
-    list.appendChild(cardNumber);
-    list.appendChild(ul);
-
-    counter++;
-});
 
 
