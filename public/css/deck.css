@@ -21,3 +21,7 @@ ul {
     list-style-type: none;
     padding-left: 10px;
 }
+
+.space-between-buttons{
+    margin: 5px;
+}

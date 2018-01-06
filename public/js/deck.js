@@ -33,7 +33,8 @@ function displayCards(cards) {
         cardNumber.setAttribute('id', cards[i]._id);
 
         buttons.innerHTML = '<form action="/edit" method="post"><input type="hidden" name="id" value="' + cards[i]._id +
-            '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>' +
+            '"/><input type="submit" class="btn btn-secondary btn-sm" value="Edit"/>' + 
+            '<span class= "space-between-buttons></span>' +
             '<input type="button"  class="btn btn-secondary btn-sm" value="Delete" onclick="deleteCard(this)"/></form>';
 
 
