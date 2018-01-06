@@ -95,19 +95,19 @@ app.get('/card/:id', function(req, res) {
   });
 });
 
-// Update a card
-app.put('/edit/:id', function(req, res) {
-  Card.findById(req.params.id, function(err, card){
+// Edit a card.  Populates html form field values from database to enable updating
+app.get('/edit/:id', function(req, res) {
+    Card.findById(req.params.id, function(err, card){
 	  if(err){
 		  console.log(err);
-		  res.status(500).send({message: "Could not update card with id " + req.params.id});
+		  res.status(500).send({message: "Could not edit card with id " + req.params.id});
 	  } else{
-		  res.send(card);
-		  console.log(card);
+		  res.render("edit", {card: card});
 	  }
   });
 });
 
+// Update a card
 app.put('/update/:id', function(req, res) {
     Card.findByIdAndUpdate(req.params.id,
     {
