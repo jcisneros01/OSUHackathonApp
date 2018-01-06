@@ -108,6 +108,22 @@ app.put('/edit/:id', function(req, res) {
   });
 });
 
+app.put('/update/:id', function(req, res) {
+    Card.findByIdAndUpdate(req.params.id,
+    {
+      front: req.body.front,
+      back: req.body.back
+    }, 
+     function(err, card){
+       if(err){
+           res.status(500).send({message: "Could not update card with id " + req.params.id});
+       }  else {
+           res.send(card);
+           res.redirect('/');
+       }
+    });
+  });
+
 // Delete a card
 app.delete('/delete/:id', function(req, res) {
     Card.findByIdAndRemove(req.params.id, function(err) {
