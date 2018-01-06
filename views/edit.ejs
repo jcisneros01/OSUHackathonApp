@@ -41,7 +41,9 @@
 
 				<div class="save-button">
 					<input type="submit" class="btn btn-success" value="Save" id="updateBtn">
+					<button type="button" class="btn btn-secondary" id="backBtn">Cancel</button>
 				</div>
+				
 				
 				
             </form>
@@ -51,6 +53,7 @@
     </div>
 <script>
 document.addEventListener("DOMContentLoaded", updateCard);
+document.addEventListener("DOMContentLoaded", backButton);
 
 var id = "<%= card._id %>";
 var url = "/update/" + id;
@@ -74,6 +77,14 @@ function updateCard(){
         input.preventDefault();
 		});	
 };	
+
+//Redirects without saving changes
+function backButton(){
+	document.getElementById("backBtn").addEventListener('click', function(input){
+		window.location.replace("/deck");
+	});
+}
+
 </script>
 
 </body>
