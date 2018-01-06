@@ -97,7 +97,7 @@ app.get('/card/:id', function(req, res) {
 
 // Edit a card.  Populates html form field values from database to enable updating
 app.post('/edit', function(req, res) {
-    Card.findById(req.params.id, function(err, card){
+    Card.findById(req.body.id, function(err, card){
 	  if(err){
 		  console.log(err);
 		  res.status(500).send({message: "Could not edit card with id " + req.params.id});
