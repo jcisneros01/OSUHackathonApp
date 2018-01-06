@@ -50,6 +50,10 @@ app.get('/study', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/studymode.html'));
 });
 
+app.get('/studydone', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/studydone.html'));
+});
+
 /*Restful Routes*/
 
 // Retrieve all cards

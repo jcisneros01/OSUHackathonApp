@@ -29,7 +29,8 @@ function traverseArray() {
     if (position < cards.length) {
         displayFront();
     } else {
-        alert("Finished");
+        //user has done the study, show him the congrat page
+        window.location.replace("/studydone");
     }
 }
 
