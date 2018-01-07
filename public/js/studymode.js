@@ -5,7 +5,7 @@ var position = 0;
 
 function getCards() {
     var req = new XMLHttpRequest();
-    var url = "/cards";
+    var url = "/deck/" + localStorage.deck;
     req.open("GET", url, true);
     req.addEventListener('load', function() {
         if (req.status >= 200 && req.status < 400) {
