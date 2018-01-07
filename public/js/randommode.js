@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', getCards);
 
 var cards;
-var position = Math.random() * ( cards.length - 0) + cards.length;
-var cardsCompleted = 0;
+var position = 0;
 
 function getCards() {
     var req = new XMLHttpRequest();
-    var url = "/cards";
+    var url = "/deck/" + localStorage.deck;
     req.open("GET", url, true);
     req.addEventListener('load', function() {
         if (req.status >= 200 && req.status < 400) {
@@ -26,9 +25,8 @@ function displayFront() {
 }
 
 function traverseArray() {
-    cardsCompleted++;
-    position = Math.random() * (cards.length - 0) + cards.length;
-    if (cardsCompleted < cards.length) {
+    position++;
+    if (position < cards.length) {
         displayFront();
     } else {
         //user has done the study, show him the congrat page
