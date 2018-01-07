@@ -73,11 +73,25 @@ app.get("/cards", function(req, res){
    });
 });
 
+// Retrieve cards from one deck
+app.get("/deck/:deck", function(req, res){
+	console.log(req.params.deck);
+   Card.find({deck:req.params.deck}, function(err, cards){
+       if(err){
+           res.status(500).send({message: "Some error occurred while retrieving notes."});
+       } else {
+          console.log(cards);
+          res.send(cards);
+       }
+   });
+});
+
 // Create a card
 app.post('/add', function(req, res) {
   Card.create({
     front: req.body.front,
-    back: req.body.back
+    back: req.body.back,
+	deck: req.body.deck
   }, function(err, card){
       if(err){
             console.log(err);
