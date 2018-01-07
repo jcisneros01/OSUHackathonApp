@@ -47,8 +47,10 @@ function populateSelect(){
 
 function newDeck(){
 	document.getElementById("newdeck").addEventListener('click', function(input){
-		localStorage.setItem("deck", document.getElementById("deckName").value);
-		window.location.replace("/");
+		if(document.getElementById("deckName").value != ""){
+			localStorage.setItem("deck", document.getElementById("deckName").value);
+			window.location.replace("/");
+		}		
 	});
 }
 
