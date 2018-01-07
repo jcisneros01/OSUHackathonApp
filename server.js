@@ -17,10 +17,7 @@ mongoose.connect("mongodb://localhost/default_deck");
 var cardSchema = new mongoose.Schema({
     front: String,
     back: String,
-	deck: {
-		num: Number,
-		name: String
-	}
+	deck: String
 });
 
 var Card = mongoose.model("Card", cardSchema);
