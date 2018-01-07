@@ -1,25 +1,30 @@
-.outer{
-  border-width: medium;
+.outer {
+    border-width: medium;
 }
 
 .container {
-  background-color: white;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-bottom: 10px;
+    background-color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 10px;
 }
 
-.app-title{
+.app-title {
     text-align: center;
 }
 
-.nav-item{
-    margin:auto;
-    color:#2780E3;
+.nav-item {
+    margin: auto;
+    color: #2780E3;
 }
 
-.app-title{
-    text-align:center;
-    background-color:#2780E3 !important;
-    color: #fff; 
+.app-title {
+    text-align: center;
+    background-color: #2780E3 !important;
+    color: #fff;
+}
+
+.current-deck {
+    text-align: center;
+    font-size: 16px;
 }

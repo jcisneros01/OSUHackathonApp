@@ -7,15 +7,16 @@
     margin: auto;
     background-color: #f5f5f5;
     border: 1px solid grey;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 10%;
-    margin-top: 10px;
+}
+
+.add-button{
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .view-cards-title {
     text-align: center;
-    padding: 10px;
+    margin-top: 10px;
 }
 
 ul {
@@ -23,7 +24,7 @@ ul {
 }
 
 li {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .space-between-buttons {
@@ -31,17 +32,17 @@ li {
 }
 
 .card-row {
-    margin-left: 10%;
+    margin-left: 5%;
     margin-top: 5%;
     margin-bottom: 5%;
-    margin-right: 10%;
+    margin-right: 5%;
 }
 
 .card>.title {
     text-align: center;
 }
 
-.card>h6 {
+.card>p {
     text-align: center;
 }
 
@@ -54,7 +55,7 @@ li {
 }
 
 .card {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }

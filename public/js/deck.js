@@ -30,7 +30,7 @@ function displayCards(cards) {
 
         //create the content inside the card 
         var ul = document.createElement("ul");
-        var cardNumber = document.createElement("h6");
+        var cardNumber = document.createElement("p");
         var li_front = document.createElement("li");
         var li_back = document.createElement("li");
         var buttons = document.createElement("span");
