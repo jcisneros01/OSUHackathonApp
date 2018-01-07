@@ -67,16 +67,12 @@ app.use(function(req, res, next){
 //==========================
 // Routes
 //==========================
-app.get('/', function(req, res) {
+app.get('/home', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/home.html'));
 });
 
-app.get('/add', function(req, res) {
+app.get('/add', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/add.html'));
-});
-
-app.get('/update', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/update.html'));
 });
 
 app.get('/back', function(req, res) {
@@ -87,19 +83,19 @@ app.get('/front', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/front.html'));
 });
 
-app.get('/deck', function(req, res) {
+app.get('/deck', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/deck.html'));
 });
 
-app.get('/study', function(req, res) {
+app.get('/study', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/studymode.html'));
 });
 
-app.get('/studydone', function(req, res) {
+app.get('/studydone', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/studydone.html'));
 });
 
-app.get('/changedeck', function(req, res) {
+app.get('/changedeck', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/changedeck.html'));
 });
 
@@ -207,17 +203,48 @@ app.delete('/delete/:id', function(req, res) {
 // AUTH ROUTES
 //==========================
 
-// LOGIN
-app.get("/login", function(req, res){
+// Register
+app.get("/register", function(req, res){
+   res.render("register"); 
+});
+
+app.post("/register", function(req, res){
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function(){
+           res.redirect("/home"); 
+        });
+    });
+});
+
+// Login
+app.get("/", function(req, res){
    res.render("login"); 
 });
 
-// app.post("/login", passport.authenticate("local", 
-//     {
-//         successRedirect: "/campgrounds",
-//         failureRedirect: "/login"
-//     }), function(req, res){
-// });
+app.post("/", passport.authenticate("local", 
+    {
+        successRedirect: "/home",
+        failureRedirect: "/"
+    }), function(req, res){
+});
+
+// Logout
+app.get("/logout", function(req, res){
+   req.logout();
+   res.redirect("/");
+});
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/");
+}
 
 //==========================
 // Error Handling routes

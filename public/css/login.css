@@ -2,6 +2,11 @@
 body {
 	background: #eee !important;	
 }
+.app-title {
+    text-align: center;
+    background-color: #2780E3 !important;
+    color: #fff;
+}
 
 .wrapper {	
 	margin-top: 80px;
@@ -48,3 +53,9 @@ body {
 	  border-top-right-radius: 0;
 	}
 }
+
+.login-help {
+	text-align: center;
+}
+
+
