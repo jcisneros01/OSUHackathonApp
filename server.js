@@ -99,6 +99,10 @@ app.get('/changedeck', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/changedeck.html'));
 });
 
+app.get('/randommode', isLoggedIn, function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/randommode.html'));
+});
+
 //==========================
 // Restful Routes
 //=========================
