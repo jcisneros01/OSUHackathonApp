@@ -16,7 +16,11 @@ mongoose.connect("mongodb://localhost/default_deck");
 // Mongoose Model
 var cardSchema = new mongoose.Schema({
     front: String,
-    back: String
+    back: String,
+	deck: {
+		num: Number,
+		name: String
+	}
 });
 
 var Card = mongoose.model("Card", cardSchema);
@@ -52,6 +56,10 @@ app.get('/study', function(req, res) {
 
 app.get('/studydone', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/studydone.html'));
+});
+
+app.get('/changedeck', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/changedeck.html'));
 });
 
 /*Restful Routes*/
