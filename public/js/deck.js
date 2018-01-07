@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', getCards);
 
 function getCards() {
+
     var req = new XMLHttpRequest();
     var url = "/deck/" + localStorage.deck;
     req.open("GET", url, true);

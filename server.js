@@ -24,15 +24,6 @@ mongoose.connect("mongodb://localhost/default_deck");
 // Models
 //==========================
 
-// Cards
-var cardSchema = new mongoose.Schema({
-    front: String,
-    back: String,
-  deck: String
-});
-
-var Card = mongoose.model("Card", cardSchema);
-
 // Users
 var UserSchema = new mongoose.Schema({
   email: String,
@@ -42,6 +33,21 @@ var UserSchema = new mongoose.Schema({
 UserSchema.plugin(passportLocalMongoose)
 var User = mongoose.model("User", UserSchema);
 
+// Cards
+var cardSchema = new mongoose.Schema({
+    front: String,
+    back: String,
+    deck: String,
+    author: {
+       id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User"
+       },
+       username: String
+    }
+});
+
+var Card = mongoose.model("Card", cardSchema);
 
 
 //==========================
@@ -107,9 +113,13 @@ app.get('/randommode', isLoggedIn, function(req, res) {
 // Restful Routes
 //=========================
 
+
 // Retrieve all cards
 app.get("/cards", function(req, res){
-   Card.find({}, function(err, cards){
+   Card.find({author: {
+        id: req.user._id,
+        username: req.user.username
+   }}, function(err, cards){
        if(err){
            res.status(500).send({message: "Some error occurred while retrieving notes."});
        } else {
@@ -132,12 +142,16 @@ app.get("/deck/:deck", function(req, res){
    });
 });
 
-// Create a card
+// Create a card 
 app.post('/add', function(req, res) {
   Card.create({
     front: req.body.front,
     back: req.body.back,
-	deck: req.body.deck
+	  deck: req.body.deck,
+    author: {
+        id: req.user._id,
+        username: req.user.username
+    }
   }, function(err, card){
       if(err){
             console.log(err);
