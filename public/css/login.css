@@ -58,4 +58,11 @@ body {
 	text-align: center;
 }
 
+h1 {
+	font-family: 'Indie Flower', cursive !important;
+}
+
+.space{
+	margin: 10px;
+}
 

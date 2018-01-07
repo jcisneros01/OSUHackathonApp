@@ -28,5 +28,9 @@
 }
 
 #logout {
-    color: white;
+    margin-left:85%;
+}
+
+h1 {
+    font-family: 'Indie Flower', cursive !important;
 }

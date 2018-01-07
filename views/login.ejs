@@ -3,19 +3,24 @@
 <head>
     <meta charset="utf-8">
     <title>Login</title>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|Raleway" rel="stylesheet">3
     <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
   <div class="app-title jumbotron">
-        <h2>FlashCard App</h2>
+        <h1>FlashDeck</h1>
+
+      <p class="app-description">A simple flashcard app</p>
   </div>
   <div class="wrapper">
     <form class="form-signin" action="/" method="POST">       
-      <h2 class="form-signin-heading">Please login</h2>
+      <h3 class="form-signin-heading">Please login</h3>
       <input type="text" class="form-control" name="username" placeholder="username" required="" autofocus="" />
+      <div class="space"></div>
       <input type="password" class="form-control" name="password" placeholder="password" required=""/>      
+      <div class="space"></div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+      <div class="space"></div>
       <div class="login-help"><a href="/register">Register</a></div>
     </form>
   </div>
