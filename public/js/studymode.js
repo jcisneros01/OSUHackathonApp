@@ -15,7 +15,7 @@ function getCards() {
         if (req.status >= 200 && req.status < 400) {
             cards = JSON.parse(req.responseText);
             console.log(cards);
-            displayFront();
+			displayFront(); 
         } else {
             console.log("Error in network request: " + req.statusText);
         }
@@ -30,7 +30,9 @@ function getCards() {
  ***********************************************/
 function displayFront() {
     var cardView = document.getElementById("cardView");
-    cardView.innerHTML = cards[position].front;
+    if (cards.length > 0){
+		cardView.innerHTML = cards[position].front;
+	}
 }
 
 /************************************************
@@ -53,5 +55,7 @@ function traverseArray() {
  ***********************************************/
 function displayBack() {
     var cardView = document.getElementById("cardView");
+	if (cards.length > 0){
     cardView.innerHTML = cards[position].back;
+	}
 }

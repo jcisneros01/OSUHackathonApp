@@ -48,7 +48,9 @@ function shuffleCards(array) {
  ***********************************************/
 function displayFront() {
     var cardView = document.getElementById("cardView");
+	if(cards.length > 0){
     cardView.innerHTML = cards[position].front;
+	}
 }
 
 /************************************************
@@ -71,5 +73,7 @@ function traverseArray() {
  ***********************************************/
 function displayBack() {
     var cardView = document.getElementById("cardView");
+	if(cards.length > 0){
     cardView.innerHTML = cards[position].back;
+	}
 }
