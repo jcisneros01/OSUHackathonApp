@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/default_deck");
 
-
 //==========================
 // Models
 //==========================
@@ -48,7 +47,6 @@ var cardSchema = new mongoose.Schema({
 });
 
 var Card = mongoose.model("Card", cardSchema);
-
 
 //==========================
 // PASSPORT CONFIGURATION
@@ -132,7 +130,12 @@ app.get("/cards", function(req, res){
 // Retrieve cards from one deck
 app.get("/deck/:deck", function(req, res){
 	console.log(req.params.deck);
-   Card.find({deck:req.params.deck}, function(err, cards){
+   Card.find({deck:req.params.deck, 
+      author: {
+        id: req.user._id,
+        username: req.user.username
+   }
+ }, function(err, cards){
        if(err){
            res.status(500).send({message: "Some error occurred while retrieving notes."});
        } else {
