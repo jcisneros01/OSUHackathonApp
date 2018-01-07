@@ -1,4 +1,6 @@
-// Set up 
+//==========================
+// Set up
+//==========================
 var express = require("express");
 var app = express();
 var path = require('path');
@@ -17,12 +19,40 @@ app.use(bodyParser.json());
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/default_deck");
 
+
+//==========================
+// Models
+//==========================
+
+// Cards
+var cardSchema = new mongoose.Schema({
+    front: String,
+    back: String,
+  deck: String
+});
+
+var Card = mongoose.model("Card", cardSchema);
+
+// Users
+var UserSchema = new mongoose.Schema({
+  email: String,
+  name: String
+});
+
+UserSchema.plugin(passportLocalMongoose)
+var User = mongoose.model("User", UserSchema);
+
+
+
+//==========================
 // PASSPORT CONFIGURATION
+//==========================
 app.use(require("express-session")({
     secret: "super secret message",
     resave: false,
     saveUninitialized: false
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -34,16 +64,9 @@ app.use(function(req, res, next){
    next();
 });
 
-// Mongoose Model
-var cardSchema = new mongoose.Schema({
-    front: String,
-    back: String,
-	deck: String
-});
-
-var Card = mongoose.model("Card", cardSchema);
-
+//==========================
 // Routes
+//==========================
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/home.html'));
 });
@@ -80,7 +103,9 @@ app.get('/changedeck', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/changedeck.html'));
 });
 
-/*Restful Routes*/
+//==========================
+// Restful Routes
+//=========================
 
 // Retrieve all cards
 app.get("/cards", function(req, res){
@@ -179,7 +204,7 @@ app.delete('/delete/:id', function(req, res) {
   });
 
 //==========================
-//AUTH ROUTES
+// AUTH ROUTES
 //==========================
 
 // LOGIN
@@ -194,7 +219,9 @@ app.get("/login", function(req, res){
 //     }), function(req, res){
 // });
 
+//==========================
 // Error Handling routes
+//==========================
 app.use(function(req,res){
   res.status(404);
   res.render('404');
@@ -206,7 +233,9 @@ app.use(function(err, req, res, next){
   res.render('500');
 });
 
+//==========================
 // Start server
+//==========================
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
