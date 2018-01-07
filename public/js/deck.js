@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', getCards);
 
 function getCards() {
     var req = new XMLHttpRequest();
-    var url = "/cards";
+    var url = "/deck/" + localStorage.deck;
     req.open("GET", url, true);
     req.addEventListener('load', function() {
         if (req.status >= 200 && req.status < 400) {
@@ -17,7 +17,16 @@ function getCards() {
 }
 
 function displayCards(cards) {
-
+	//displays alert box if the deck is empty
+	if (cards.length == 0){
+		var alert = document.createElement("div");
+		alert.setAttribute("class","alert alert-info");
+		alert.setAttribute("role","alert");
+		alert.setAttribute("style","margin:5px");
+		var message = "<strong>Deck Empty!</strong> To get started, add a new card to the deck!"
+		alert.innerHTML = message;
+		document.getElementById("empty-alert").appendChild(alert);
+	}
     for (var i = 0; i < cards.length; i++) {
 
         //create the a row

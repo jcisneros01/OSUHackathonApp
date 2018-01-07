@@ -1,7 +1,13 @@
-// Set up 
+//==========================
+// Set up
+//==========================
 var express = require("express");
 var app = express();
 var path = require('path');
+var passport = require("passport")
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+
 app.set('port', 3000); // set port
 app.use(express.static(__dirname + '/public')); // static files
 app.set("view engine", "ejs");
@@ -13,26 +19,60 @@ app.use(bodyParser.json());
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/default_deck");
 
-// Mongoose Model
+
+//==========================
+// Models
+//==========================
+
+// Cards
 var cardSchema = new mongoose.Schema({
     front: String,
     back: String,
-	deck: String
+  deck: String
 });
 
 var Card = mongoose.model("Card", cardSchema);
 
+// Users
+var UserSchema = new mongoose.Schema({
+  email: String,
+  name: String
+});
+
+UserSchema.plugin(passportLocalMongoose)
+var User = mongoose.model("User", UserSchema);
+
+
+
+//==========================
+// PASSPORT CONFIGURATION
+//==========================
+app.use(require("express-session")({
+    secret: "super secret message",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next){
+   res.locals.currentUser = req.user;
+   next();
+});
+
+//==========================
 // Routes
-app.get('/', function(req, res) {
+//==========================
+app.get('/home', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/home.html'));
 });
 
-app.get('/add', function(req, res) {
+app.get('/add', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/add.html'));
-});
-
-app.get('/update', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/update.html'));
 });
 
 app.get('/back', function(req, res) {
@@ -43,23 +83,25 @@ app.get('/front', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/front.html'));
 });
 
-app.get('/deck', function(req, res) {
+app.get('/deck', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/deck.html'));
 });
 
-app.get('/study', function(req, res) {
+app.get('/study', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/studymode.html'));
 });
 
-app.get('/studydone', function(req, res) {
+app.get('/studydone', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/studydone.html'));
 });
 
-app.get('/changedeck', function(req, res) {
+app.get('/changedeck', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/public/changedeck.html'));
 });
 
-/*Restful Routes*/
+//==========================
+// Restful Routes
+//=========================
 
 // Retrieve all cards
 app.get("/cards", function(req, res){
@@ -73,11 +115,25 @@ app.get("/cards", function(req, res){
    });
 });
 
+// Retrieve cards from one deck
+app.get("/deck/:deck", function(req, res){
+	console.log(req.params.deck);
+   Card.find({deck:req.params.deck}, function(err, cards){
+       if(err){
+           res.status(500).send({message: "Some error occurred while retrieving notes."});
+       } else {
+          console.log(cards);
+          res.send(cards);
+       }
+   });
+});
+
 // Create a card
 app.post('/add', function(req, res) {
   Card.create({
     front: req.body.front,
-    back: req.body.back
+    back: req.body.back,
+	deck: req.body.deck
   }, function(err, card){
       if(err){
             console.log(err);
@@ -143,6 +199,56 @@ app.delete('/delete/:id', function(req, res) {
     });
   });
 
+//==========================
+// AUTH ROUTES
+//==========================
+
+// Register
+app.get("/register", function(req, res){
+   res.render("register"); 
+});
+
+app.post("/register", function(req, res){
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function(){
+           res.redirect("/home"); 
+        });
+    });
+});
+
+// Login
+app.get("/", function(req, res){
+   res.render("login"); 
+});
+
+app.post("/", passport.authenticate("local", 
+    {
+        successRedirect: "/home",
+        failureRedirect: "/"
+    }), function(req, res){
+});
+
+// Logout
+app.get("/logout", function(req, res){
+   req.logout();
+   res.redirect("/");
+});
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/");
+}
+
+//==========================
+// Error Handling routes
+//==========================
 app.use(function(req,res){
   res.status(404);
   res.render('404');
@@ -154,7 +260,9 @@ app.use(function(err, req, res, next){
   res.render('500');
 });
 
+//==========================
 // Start server
+//==========================
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });

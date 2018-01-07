@@ -14,7 +14,7 @@
 
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" href="/">Home</a>
+          <a class="nav-link active" href="/home">Home</a>
         </li>
       </ul>
 
@@ -28,13 +28,14 @@
 
           <div class="section">
             <label id="boxName">Front</label>
-            <input class="form-control" type="text" name="front">
+            <input class="form-control" type="text" name="front" required>
           </div>
 
           <div class="section">
             <label id="boxName">Back</label>
-            <input class="form-control" type="text" name="back">
+            <input class="form-control" type="text" name="back" required>
           </div>
+		  <input type ="hidden" type="text" name="deck" id="deck">
           <div class="submit-button">
             <input class="btn btn-success" type="submit">
             </div>
@@ -42,5 +43,6 @@
         </form>
       </div>
     </div>
+	<script src="js/add.js"></script>
   </body>
 </html>
