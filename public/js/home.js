@@ -6,7 +6,7 @@ function updateDeck(){
 
 function defaultCheck(){
 	if (localStorage.deck === undefined){
-		localStorage.deck = "OSU Beavers";
+		localStorage.deck = "Default";
 	}
 	updateDeck();
 }
