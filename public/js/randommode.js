@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', getCards);
 
 var cards;
 var position = Math.random() * ( cards.length - 0) + cards.length;
+var cardsCompleted = 0;
 
 function getCards() {
     var req = new XMLHttpRequest();
@@ -25,8 +26,9 @@ function displayFront() {
 }
 
 function traverseArray() {
+    cardsCompleted++;
     position = Math.random() * (cards.length - 0) + cards.length;
-    if (position < cards.length) {
+    if (cardsCompleted < cards.length) {
         displayFront();
     } else {
         //user has done the study, show him the congrat page
