@@ -20,28 +20,41 @@
 
 ul {
     list-style-type: none;
-    padding-left: 10px;
 }
 
 li {
-    margin: 10px; 
+    margin-top: 15px;
 }
 
-.space-between-buttons{
+.space-between-buttons {
     margin: 5px;
 }
 
-.card{
-    margin-top: 10%;
+.card-row {
     margin-left: 10%;
-    width: 100%;
-    padding: 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 10%;
 }
 
-.card-row > h6 {
+.card>.title {
     text-align: center;
-} 
+}
 
-.card-row > span{
+.card>h6 {
     text-align: center;
+}
+
+.card>span {
+    text-align: center;
+}
+
+.card-list {
+    width: 100%;
+}
+
+.card {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
