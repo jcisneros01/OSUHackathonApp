@@ -80,3 +80,4 @@ function deleteCard(element) {
     });
     req.send(null);
 }
+
