@@ -8,4 +8,4 @@ Technologies used:
 
 - frontend: HTML, CSS, Javascript
 - backend: Node.js, Express, MongoDB
-- deployment: Digital Ocean
+- deployment: Digital Ocean Ubuntu VPS
