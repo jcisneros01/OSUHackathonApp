@@ -7,5 +7,5 @@ A simple flash card web application.
 Technologies used:
 
 - frontend: HTML, CSS, Javascript
-- backend: Node.js, MongoDB
+- backend: Node.js, Express, MongoDB
 - deployment: Digital Ocean

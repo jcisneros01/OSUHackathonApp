@@ -98,7 +98,7 @@ app.get('/card/:id', function(req, res) {
   });
 });
 
-// Edit a card.  Populates html form field values from database to enable updating
+// Edit a card
 app.post('/edit', function(req, res) {
     Card.findById(req.body.id, function(err, card){
 	  if(err){

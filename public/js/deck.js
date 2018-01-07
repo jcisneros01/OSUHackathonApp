@@ -58,7 +58,7 @@ function displayCards(cards) {
     }
 }
 
-// Delete card and if successfull redirect
+// Delete card and if successful redirect
 function deleteCard(element) {
     var id = element.form.elements[0].value;
     console.log(id);
