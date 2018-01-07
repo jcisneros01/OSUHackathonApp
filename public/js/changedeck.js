@@ -49,7 +49,7 @@ function newDeck(){
 	document.getElementById("newdeck").addEventListener('click', function(input){
 		if(document.getElementById("deckName").value != ""){
 			localStorage.setItem("deck", document.getElementById("deckName").value);
-			window.location.replace("/");
+			window.location.replace("/home");
 		}		
 	});
 }
@@ -57,6 +57,6 @@ function newDeck(){
 function chooseDeck(){
 	document.getElementById("choosedeck").addEventListener('click', function(input){
 		localStorage.setItem("deck", document.getElementById("deck").value);
-		window.location.replace("/");
+		window.location.replace("/home");
 	});
 }
