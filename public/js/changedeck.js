@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', chooseDeck);
 var cards;
 var listOfDecks = [];
 
+/************************************************
+ *                 getCards 
+ * gathers entire set of cards 
+ ***********************************************/
 function getCards() {
     var req = new XMLHttpRequest();
     var url = "/cards";
@@ -20,6 +24,10 @@ function getCards() {
     req.send(null);
 }
 
+/************************************************
+ *                 getDecks 
+ * builds array of unique decks 
+ ***********************************************/
 function getDecks(cards){
 	for (var i=0; i<cards.length; i++){
 		var found = 0;
@@ -35,7 +43,10 @@ function getDecks(cards){
 	populateSelect();
 }
 
-
+/************************************************
+ *                 populateSelect 
+ * adds unique decks to select HTML drop-down via DOM
+ ***********************************************/
 function populateSelect(){
 	for (var i=0; i<listOfDecks.length; i++){
 		var deck = document.createElement("option");
@@ -45,6 +56,11 @@ function populateSelect(){
 	}	
 }
 
+/************************************************
+ *                 newDeck 
+ * Binds button action to store new deck name in localStorage 
+ * and redirect to /home
+ ***********************************************/
 function newDeck(){
 	document.getElementById("newdeck").addEventListener('click', function(input){
 		if(document.getElementById("deckName").value != ""){
@@ -54,6 +70,11 @@ function newDeck(){
 	});
 }
 
+/************************************************
+ *                 chooseDeck 
+ * Binds button action to store chosen deck name in localStorage 
+ * and redirect to /home
+ ***********************************************/
 function chooseDeck(){
 	document.getElementById("choosedeck").addEventListener('click', function(input){
 		localStorage.setItem("deck", document.getElementById("deck").value);
