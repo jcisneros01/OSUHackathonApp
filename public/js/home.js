@@ -26,9 +26,9 @@ function freezeLink() {
         if (req.status >= 200 && req.status < 400) {
             cards = JSON.parse(req.responseText);
 			if(cards.length == 0){
-				document.getElementById("studymode").setAttribute("href","");
+				document.getElementById("studymode").setAttribute("href","#");
 				document.getElementById("studymode").setAttribute("style", "color: gray");
-				document.getElementById("randommode").setAttribute("href","");
+				document.getElementById("randommode").setAttribute("href","#");
 				document.getElementById("randommode").setAttribute("style", "color: gray");
 			}
 			else{
