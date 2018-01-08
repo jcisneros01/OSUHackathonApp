@@ -1,13 +1,3 @@
-.congrat-message{
-    text-align: center;
-    margin-top: 20%;
-}
-
-.go-home-button{
-	text-align: center;
-	margin-top: 30%;
-}
-
 h1 {
     font-family: 'Indie Flower', cursive !important;
 }  
@@ -17,4 +7,18 @@ h1 {
     background-color: white !important;
     color: #2780E3;
     border-bottom: 1px solid #868e96;
+}
+
+.change-title {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.submit-button{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.space{
+    margin: 15%;
 }

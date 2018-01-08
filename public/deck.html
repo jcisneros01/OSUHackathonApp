@@ -6,37 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Deck</title>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="css/deck.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
-    <div class="outer">
+    <div class="app-title jumbotron">
+        <h1>FlashDeck</h1>
+        <p>A simple flashcard app</p>
+    </div>
 
+
+    <div class="outer">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="/home">Home</a>
             </li>
+            <li class="nav-item">
+                    <a class="nav-link active" href="/logout">Logout</a>
+                  </li>
         </ul>
 
-        <div class="view-cards-title">
-            <h4>View Cards</h4>
+    <div class="view-cards-title">
+        <h4>View Cards</h4>
+    </div>
+
+        <div class="add-button">
+            <a class="btn btn-primary btn-sm id=" addButton " href="/add ">Add Card</a>
         </div>
 
-       <div class="add-button" >
-            <a class="btn btn-primary btn-sm id="addButton" href="/add">Add Card</a>
-        </div>
+        <div class="container ">
 
-        <div class="container">
-
-            <div class="row">
-                <div class="card-list" id="empty-alert">
+            <div class="row ">
+                <div class="card-list " id="empty-alert ">
                 </div>
             </div>
 
         </div>
     </div>
-    <script src="js/deck.js"></script>
+    <script src="js/deck.js "></script>
 </body>
 
 </html>

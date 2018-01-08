@@ -1,6 +1,7 @@
 .outer {
     border-width: medium;
-    padding: 10%;
+    padding-left: 10%;
+    padding-right: 10%
 }
 
 .container {
@@ -12,9 +13,9 @@
     padding-bottom: 10px;
 }
 
-.mode-title {
+.mode-name {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5% !important;
 }
 
 .view-cards-title {
@@ -44,6 +45,14 @@ h5 {
     margin-top: 5%;
 }
 
-.mode-name{
+
+h1 {
+    font-family: 'Indie Flower', cursive !important;
+}  
+
+.app-title {
     text-align: center;
+    background-color: white !important;
+    color: #2780E3;
+    border-bottom: 1px solid #868e96;
 }

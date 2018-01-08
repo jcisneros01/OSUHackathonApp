@@ -1,6 +1,7 @@
 .outer {
     border-width: medium;
-    padding: 10%;
+    padding-right: 10%;
+    padding-left: 10%;
 }
 
 .container {
@@ -12,11 +13,12 @@
 .add-button{
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .view-cards-title {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5%;
 }
 
 ul {
@@ -58,4 +60,15 @@ li {
     padding-top: 5px;
     padding-bottom: 5px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Indie Flower', cursive !important;
+}  
+
+.app-title {
+    text-align: center;
+    background-color: white !important;
+    color: #2780E3;
+    border-bottom: 1px solid #868e96;
 }

@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add New Card</title>
 
-    <link rel="stylesheet" href="css/add.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Add New Card</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="css/add.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
 
-  <body>
-    <div class="outer">
+<body>
+  <div class="app-title jumbotron">
+    <h1>FlashDeck</h1>
+    <p>A simple flashcard app</p>
 
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="/home">Home</a>
-        </li>
-      </ul>
+  </div>
+
+  <div class="outer">
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/logout">Logout</a>
+      </li>
+    </ul>
+
+      <div class="add-title">
+        <h4>Add New Card</h4>
+      </div>
 
       <div class="container">
+      <form action="/add" method="POST">
 
-        <div class="add-title">
-          <h4>Add New Card</h4>
+        <div class="section">
+          <label id="boxName">Front</label>
+          <input class="form-control" type="text" name="front" required>
         </div>
 
-        <form action="/add" method="POST">
-
-          <div class="section">
-            <label id="boxName">Front</label>
-            <input class="form-control" type="text" name="front" required>
-          </div>
-
-          <div class="section">
-            <label id="boxName">Back</label>
-            <input class="form-control" type="text" name="back" required>
-          </div>
-		  <input type ="hidden" type="text" name="deck" id="deck">
-          <div class="submit-button">
-            <input class="btn btn-success" type="submit">
-            </div>
-          </div>
-        </form>
-      </div>
+        <div class="section">
+          <label id="boxName">Back</label>
+          <input class="form-control" type="text" name="back" required>
+        </div>
+        <input type="hidden" type="text" name="deck" id="deck">
+        <div class="submit-button">
+          <input class="btn btn-success" type="submit">
+        </div>
     </div>
-	<script src="js/add.js"></script>
-  </body>
+    </form>
+  </div>
+  </div>
+  <script src="js/add.js"></script>
+</body>
+
 </html>

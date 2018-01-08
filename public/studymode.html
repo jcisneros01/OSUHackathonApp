@@ -4,27 +4,34 @@
 <head>
     <meta charset="utf-8">
     <title>Study Mode</title>
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="css/studymode.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
+    <div class="app-title jumbotron">
+        <h1>FlashDeck</h1>
+        <p>A simple flashcard app</p>
+    </div>
 
     <div class="outer">
 
-        <div class="mode-name">
-            <h4>
-                Normal Study Mode
-            </h4>
-        </div>
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="/home">Home</a>
             </li>
-
+            <li class="nav-item">
+                    <a class="nav-link active" href="/logout">Logout</a>
+                  </li>
         </ul>
         <div class="container">
+
+            <div class="mode-name">
+                <h4>
+                    Normal Study Mode
+                </h4>
+            </div>
             <div class="card jumbotron card-outline-primary text-center Card-otron">
                 <h2 class="view-cards-title" id="cardView">Front</h2>
             </div>

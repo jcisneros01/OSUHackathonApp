@@ -1,7 +1,7 @@
 .outer{
     border-width: medium;
-    padding: 10%;
-  
+    padding-left: 10%;
+    padding-right: 10%;
   }
   .container {
     margin:auto;
@@ -30,7 +30,7 @@
   
   .edit-title{
       text-align: center;
-      padding: 10px;
+      padding: 5%;
   }
   
   .save-button{
@@ -38,4 +38,13 @@
       padding: 10px;
   }
   
-  
+h1 {
+  font-family: 'Indie Flower', cursive !important;
+}  
+
+.app-title {
+  text-align: center;
+  background-color: white !important;
+  color: #2780E3;
+  border-bottom: 1px solid #868e96;
+}

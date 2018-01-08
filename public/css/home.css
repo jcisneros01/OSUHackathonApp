@@ -4,14 +4,12 @@
 
 .container {
     background-color: white;
-}
-
-.app-title {
     text-align: center;
 }
 
+
 .nav-item {
-    margin: auto;
+    margin-top: 2.5%;
     color: #2780E3;
 }
 
@@ -29,6 +27,10 @@
 
 #logout {
     margin-left:85%;
+}
+
+.app-title {
+    text-align: center;
 }
 
 h1 {

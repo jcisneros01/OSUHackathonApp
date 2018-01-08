@@ -2,46 +2,56 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ADD OR CHANGE DECK</title>
-
-    <link rel="stylesheet" href="css/add.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ADD OR CHANGE DECK</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lora|Raleway" rel="stylesheet">
+	<link rel="stylesheet" href="css/changedeck.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
-    <div class="outer">
 
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="/home">Home</a>
-            </li>
-        </ul>
+	<div class="app-title jumbotron">
+		<h1>FlashDeck</h1>
+		<p>A simple flashcard app</p>
+	</div>
 
-        <div class="container">
+	<div class="outer">
 
-            <div class="add-title">
-				<h4>Change Deck</h4>
-			</div>
+
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" href="/home">Home</a>
+			</li>
+			<li class="nav-item">
+					<a class="nav-link active" href="/logout">Logout</a>
+				  </li>
+		</ul>
+
+		<div class="container">
+
+		<div class="change-title">
+			<h4>Change Deck</h4>
+		</div>
 			<form>
 				<div class="form-group">
 					<label for="deck">Choose Deck</label>
-						<select class="form-control" id="deck">
-							<!--<option value="example">example</option>-->
-						</select>
+					<select class="form-control" id="deck">
+						<!--<option value="example">example</option>-->
+					</select>
 					<div class="submit-button">
 						<button type="button" class="btn btn-success" id="choosedeck">Submit</button>
 					</div>
 				</div>
 			</form>
-		
-		<br>
-		<br>
-		
-			<div class="add-title">
+			
+			<div class="space"></div>
+
+			<div class="change-title">
 				<h4>Add New Deck</h4>
 			</div>
+
 			<form>
 				<div class="form-group">
 					<label for="deck">Enter Name of Deck</label>
@@ -49,11 +59,11 @@
 					<div class="submit-button">
 						<button type="button" class="btn btn-success" id="newdeck">Submit</button>
 					</div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script src="js/changedeck.js"></script>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="js/changedeck.js"></script>
 </body>
 
 </html>
