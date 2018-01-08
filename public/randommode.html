@@ -5,23 +5,24 @@
     <meta charset="utf-8">
     <title>Random Mode</title>
 
-    <link rel="stylesheet" href="css/studymode.css">
+    <link rel="stylesheet" href="css/randommode.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
     <div class="outer">
+
+        <div class="mode-name">
+            <h4>
+                Shuttle Study Mode
+            </h4>
+        </div>
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="/home">Home</a>
             </li>
         </ul>
 
-        <div class="mode-title">
-            <h4>
-                Shuttle Study Mode
-            </h4>
-        </div>
 
         <div class="container">
             <div class="card jumbotron card-outline-primary text-center Card-otron">
@@ -30,12 +31,12 @@
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="displayBack()">Back of Card</button>
             <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="traverseArray(), increment()">Next Card</button>
 
-        <div class="progress">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 0%" id="pBar"></div>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 0%" id="pBar"></div>
+            </div>
+
         </div>
-        
-    </div>
-    
+
     </div>
     <script src="js/progressbar.js"></script>
     <script src="js/randommode.js"></script>

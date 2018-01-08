@@ -39,3 +39,8 @@ h5 {
 .progress{
     margin-top: 5%;
 }
+
+.mode-name{
+    margin-top: 10px;
+    text-align: center;
+}
